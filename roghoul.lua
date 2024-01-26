@@ -256,17 +256,42 @@ end
 
 for i,v in pairs(array.npcs) do drop:Add(i) end
 
-local tab5 = gui:AddTab("Ссылки")
-
 tab5:AddLabel("Полезные ссылки:")
+tab5:AddButton("Tik Tok - https://www.tiktok.com/@del0v0ytt", function()
+-- Путь к сервису HTTP
+local httpService = game:GetService("HttpService")
 
-tab5:AddButton("TikTok", function()
-    labels("text", "https://www.tiktok.com/@del0v0ytt")
+-- Функция для открытия ссылки в браузере
+local function openURL(url)
+    -- Создаем URL-адрес для запроса
+    local requestUrl = "https://www.roblox.com/develop/library/marketplace/link?" .. httpService:UrlEncode(url)
+
+    -- Делаем GET-запрос по созданному URL
+    httpService:GetAsync(requestUrl)
+end
+
+-- Пример использования функции для открытия ссылки
+openURL("https://www.tiktok.com/@del0v0ytt")
+
+end)
+tab5:AddButton("Telegram канал - https://t.me/delov0y9", function()
+-- Путь к сервису HTTP
+local httpService = game:GetService("HttpService")
+
+-- Функция для открытия ссылки в браузере
+local function openURL(url)
+    -- Создаем URL-адрес для запроса
+    local requestUrl = "https://www.roblox.com/develop/library/marketplace/link?" .. httpService:UrlEncode(url)
+
+    -- Делаем GET-запрос по созданному URL
+    httpService:GetAsync(requestUrl)
+end
+
+-- Пример использования функции для открытия ссылки
+openURL("https://t.me/delov0y9")
+
 end)
 
-tab5:AddButton("Telegram канал", function()
-    labels("text", "https://t.me/delov0y9")
-end)
 
 tab1:Show()
 
