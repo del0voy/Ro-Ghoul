@@ -178,9 +178,15 @@ player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
 end)
 
 local trainersInfo = {
-    ["Ken Kaneki"] = "+50 к скорости",
-    ["Renji Yomo"] = "+50 к физической силе",
-    ["(S1) Shuu Tsukiyama"] = "50 Points added to Physical stat\n6.25% Progress\n10 Levels"
+    ["Ken Kaneki"] = "+50 к скорости\n10 уровней за тренировку",
+    ["Renji Yomo"] = "+50 к физической силе\n10 уровней за тренировку",
+    ["(S1) Touka Kirishima"] = "+50 очков к Кагуне.\n5 уровней за тренировку",
+    ["(S1) Nishiki Nishio"] = "+25% к скорости удара\n4 уровней за тренировку",
+    ["(S1) Shuu Tsukiyama"] = "+25 опыта к каждому собранному трупу\n5 уровней за тренировку",
+    ["(S1) Kuzen Yoshimura"] = "Уменьшены эффекты безумия\n2 уровня за тренировку",
+    ["(S1) Rize Kamishiro"] = "Регенерируют 17,5% здоровья за труп\n8 уровней за тренировку",
+    ["(S1) Yakumo Oomori"] = "Дает навык «Безумный укус»\n2 уровня за тренировку",
+    ["(Tortured) Kaneki"] = "Регенерация увеличена на 1,25\n2 уровня за тренировку"
 }
 
 local infoLabel = tab3:AddLabel("")
