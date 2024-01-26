@@ -178,9 +178,9 @@ player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
 end)
 
 local trainersInfo = {
-    ["Ken Kaneki"] = "50 Focus points on speed",
-    ["Renji Yomo"] = "50 очков добавление к физической силе",
-    ["(S1) Shuu Tsukiyama"] = "Добавляет 25 опыта к каждому собранному трупу+5 уровней за тренировку"
+    ["Ken Kaneki"] = "+50 к скорости",
+    ["Renji Yomo"] = "+50 к физической силе",
+    ["(S1) Shuu Tsukiyama"] = "Добавляет 25 опыта к каждому собранному трупу/n5 уровней за тренировку"
 }
 
 local infoLabel = tab3:AddLabel("")
