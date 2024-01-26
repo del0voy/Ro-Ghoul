@@ -132,7 +132,7 @@ end
 
 btn3 = tab1:AddButton("Reset", function() labels() end)
 
-if team == "CCG" then tab2:AddLabel("Quinque Stage") else tab2:AddLabel("Kagune Stage") end
+if team == "CCG" then tab2:AddLabel("Стадия Куинке") else tab2:AddLabel("Стадия Кагуне") end
 
 local drop2 = tab2:AddDropdown("[ 1 ]", function(opt)
     array.stage = array.stages[tonumber(opt)]
@@ -168,7 +168,7 @@ end, {min = 0, max = 15}):Set(55)
 
 labels.p = {label = tab3:AddLabel("Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
 
-local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly = true})
+local progress = tab3:AddSlider("Прогресс", nil, {min = 0, max = 100, readonly = true})
 
 progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 
