@@ -179,7 +179,8 @@ end)
 
 local trainersInfo = {
     ["Ken Kaneki"] = "50 точек фокусировки на скорости 10 уровней за тренировку",
-    ["Renji Yomo"] = "50 points added to phy 10 уровней за тренировку "
+    ["Renji Yomo"] = "50 points added to phy 10 уровней за тренировку ",
+    ["(S1) Shuu Tsukiyama"] = "Добавляет 25 опыта к каждому собранному трупу 5 уровней за тренировку "
 }
 
 local infoLabel = tab3:AddLabel("")
