@@ -98,7 +98,7 @@ labels = setmetatable({
     text = {label = tab1:AddLabel("")},
     tfarm = {label = tab1:AddLabel("")},
     space = {label = tab1:AddLabel("")},
-    Quest = {prefix = "Current Quest: ", label = tab1:AddLabel("Текущий квест: Нет")},
+    Quest = {prefix = "Текущий квест: ", label = tab1:AddLabel("Текущий квест: Нет")},
     Yen = {prefix = "Yen: ", label = tab1:AddLabel("Yen: 0"), value = 0, oldval = player.PlayerFolder.Stats.Yen.Value},
     RC = {prefix = "RC: ", label = tab1:AddLabel("RC: 0"), value = 0, oldval = player.PlayerFolder.Stats.RC.Value},
     Kills = {prefix = "Kills: ", label = tab1:AddLabel("Убийств: 0"), value = 0}
