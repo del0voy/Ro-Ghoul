@@ -35,7 +35,7 @@ local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/z4gs/s
         ["Touka Kirishima"] = false
     },
     DistanceFromNpc = 5,
-    DistanceFromBoss = 8,
+    DistanceFromBoss = 15,
     TeleportSpeed = 150,
     ReputationFarm = false,
     ReputationCashout = false,
