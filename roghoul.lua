@@ -177,6 +177,14 @@ player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
     progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 end)
 
+local trainersInfo = {
+    ["Ken Kaneki"] = "50 Focus points on speed",
+    ["Renji Yomo"] = "50 Points added to Physical stat",
+    ["(S1) Shuu Tsukiyama"] = "50 Points added to Physical stat"
+}
+
+local infoLabel = tab3:AddLabel("")
+
 btn2 = tab3:AddButton("Старт", function()
     if not array.trainer then
         array.trainer, btn2.Text = true, "Стоп"
@@ -222,6 +230,13 @@ btn2 = tab3:AddButton("Старт", function()
         array.trainer, btn2.Text = false, "Start"
     end
 end)
+
+local function showTrainerInfo(trainerName)
+    infoLabel.Text = trainersInfo[trainerName] or "Информация о тренере не найдена"
+end
+
+-- Пример использования функции для отображения информации о тренере
+showTrainerInfo(player.PlayerFolder.Trainers[team .. "Trainer"].Value)
 
 labels.time = {label = tab3:AddLabel("")}
 
