@@ -166,8 +166,6 @@ tab2:AddSlider("Distance from Bosses", function(x)
     myData.DistanceFromBoss = x * -1
 end, {min = 0, max = 15}):Set(55)
 
-labels.p = {label = tab3:AddLabel("Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
-
 local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly = true})
 
 progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
