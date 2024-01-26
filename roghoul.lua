@@ -166,35 +166,27 @@ tab2:AddSlider("Distance from Bosses", function(x)
     myData.DistanceFromBoss = x * -1
 end, {min = 0, max = 15}):Set(55)
 
-labels.p = {label = tab3:AddLabel("Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
+labels.p = {label = tab3:AddLabel("Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
 
-local progress = tab3:AddSlider("Прогресс", nil, {min = 0, max = 100, readonly = true})
+local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly = true})
 
 progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 
 player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
-    labels("p", "Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)
+    labels("p", "Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)
     progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 end)
 
-local trainersInfo = {
-    ["Ken Kaneki"] = "50 точек фокусировки на скорости 10 уровней за тренировку",
-    ["Renji Yomo"] = "50 points added to phy 10 уровней за тренировку ",
-    ["(S1) Shuu Tsukiyama"] = "Добавляет 25 опыта к каждому собранному трупу 5 уровней за тренировку "
-}
-
-local infoLabel = tab3:AddLabel("")
-
-local btn2 = tab3:AddButton("Старт", function()
+btn2 = tab3:AddButton("Start", function()
     if not array.trainer then
-        array.trainer, btn2.Text = true, "Стоп"
+        array.trainer, btn2.Text = true, "Stop"
         local connection, time
 
         while array.trainer do
             if connection and connection.Connected then
                 connection:Disconnect()
             end
-
+            
             local tkey, result
 
             connection = player.Backpack.DescendantAdded:Connect(function(obj)
@@ -202,7 +194,7 @@ local btn2 = tab3:AddButton("Старт", function()
                     tkey = obj.Value
                 end
             end)
-
+            
             result = invoke(remotes.Trainers.RequestTraining)
 
             if result == "TRAINING" then
@@ -213,7 +205,7 @@ local btn2 = tab3:AddButton("Старт", function()
                     end
                 end
             elseif result == "TRAINING COMPLETE" then
-                labels("time", "Переход к другому тренеру")
+                labels("time", "Switching to other trainer...")
                 for i,v in pairs(player.PlayerFolder.Trainers:GetDescendants()) do
                     if table.find(trainers, v.Name) and findobj(v, "Progress") and tonumber(v.Progress.Value) < 100 and tonumber(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value) == 100 then
                         invoke(remotes.Trainers.ChangeTrainer, v.Name)
@@ -221,7 +213,7 @@ local btn2 = tab3:AddButton("Старт", function()
                     end
                 end
             else
-                labels("time", "Время до следующей тренировки: "..result)
+                labels("time", "Time until the next training: "..result)
             end
             wait(1)
         end
@@ -230,13 +222,6 @@ local btn2 = tab3:AddButton("Старт", function()
         array.trainer, btn2.Text = false, "Start"
     end
 end)
-
-local function showTrainerInfo(trainerName)
-    infoLabel.Text = trainersInfo[trainerName] or "Информация о тренере не найдена"
-end
-
--- Пример использования функции для отображения информации о тренере
-showTrainerInfo(player.PlayerFolder.Trainers[team .. "Trainer"].Value)
 
 labels.time = {label = tab3:AddLabel("")}
 
