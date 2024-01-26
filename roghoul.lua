@@ -179,8 +179,7 @@ end)
 
 local trainersInfo = {
     ["Ken Kaneki"] = "50 точек фокусировки на скорости 10 уровней за тренировку",
-    ["Renji Yomo"] = "50 Points added to Physical stat\n6.25% Progress\n10 Levels"
-    -- Добавьте остальные тренеры здесь
+    ["Renji Yomo"] = "50 points added to phy 10 уровней за тренировку "
 }
 
 local infoLabel = tab3:AddLabel("")
@@ -231,11 +230,12 @@ local btn2 = tab3:AddButton("Старт", function()
     end
 end)
 
-local trainersTable = tab3:AddLabel("Тренеры:")
-
-for trainerName, trainerInfo in pairs(trainersInfo) do
-    trainersTable.Text = trainersTable.Text .. trainerName .. ":\n" .. trainerInfo .. "\n\n"
+local function showTrainerInfo(trainerName)
+    infoLabel.Text = trainersInfo[trainerName] or "Информация о тренере не найдена"
 end
+
+-- Пример использования функции для отображения информации о тренере
+showTrainerInfo(player.PlayerFolder.Trainers[team .. "Trainer"].Value)
 
 labels.time = {label = tab3:AddLabel("")}
 
