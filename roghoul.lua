@@ -98,7 +98,7 @@ labels = setmetatable({
     text = {label = tab1:AddLabel("")},
     tfarm = {label = tab1:AddLabel("")},
     space = {label = tab1:AddLabel("")},
-    Quest = {prefix = "Текущий квест: ", label = tab1:AddLabel("Текущий квест: Нет")},
+    Quest = {prefix = "Current Quest: ", label = tab1:AddLabel("Current Quest: None")},
     Yen = {prefix = "Yen: ", label = tab1:AddLabel("Yen: 0"), value = 0, oldval = player.PlayerFolder.Stats.Yen.Value},
     RC = {prefix = "RC: ", label = tab1:AddLabel("RC: 0"), value = 0, oldval = player.PlayerFolder.Stats.RC.Value},
     Kills = {prefix = "Kills: ", label = tab1:AddLabel("Убийств: 0"), value = 0}
@@ -177,7 +177,15 @@ player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
     progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 end)
 
-btn2 = tab3:AddButton("Старт", function()
+local trainersInfo = {
+    ["Ken Kaneki"] = "50 Focus points on speed\n10% Progress\n10 Levels",
+    ["Renji Yomo"] = "50 Points added to Physical stat\n6.25% Progress\n10 Levels"
+    -- Добавьте остальные тренеры здесь
+}
+
+local infoLabel = tab3:AddLabel("")
+
+local btn2 = tab3:AddButton("Старт", function()
     if not array.trainer then
         array.trainer, btn2.Text = true, "Стоп"
         local connection, time
@@ -222,6 +230,12 @@ btn2 = tab3:AddButton("Старт", function()
         array.trainer, btn2.Text = false, "Start"
     end
 end)
+
+local trainersTable = tab3:AddLabel("Тренеры:\n")
+
+for trainerName, trainerInfo in pairs(trainersInfo) do
+    trainersTable.Text = trainersTable.Text .. trainerName .. ":\n" .. trainerInfo .. "\n\n"
+end
 
 labels.time = {label = tab3:AddLabel("")}
 
