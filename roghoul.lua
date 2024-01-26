@@ -178,7 +178,7 @@ player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
 end)
 
 local trainersInfo = {
-    ["Ken Kaneki"] = "50 Focus points on speed\n10% Progress\n10 Levels",
+    ["Ken Kaneki"] = "50 точек фокусировки на скорости 10 уровней за тренировку",
     ["Renji Yomo"] = "50 Points added to Physical stat\n6.25% Progress\n10 Levels"
     -- Добавьте остальные тренеры здесь
 }
@@ -231,7 +231,7 @@ local btn2 = tab3:AddButton("Старт", function()
     end
 end)
 
-local trainersTable = tab3:AddLabel("Тренеры:\n")
+local trainersTable = tab3:AddLabel("Тренеры:")
 
 for trainerName, trainerInfo in pairs(trainersInfo) do
     trainersTable.Text = trainersTable.Text .. trainerName .. ":\n" .. trainerInfo .. "\n\n"
