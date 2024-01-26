@@ -10,7 +10,7 @@ local get = setmetatable({}, {
     end
 })
 
-local tab1, tab2, tab3, tab4 = gui:AddTab("Главное"), gui:AddTab("Настройки фарма"), gui:AddTab("Тренер"), gui:AddTab("Другое")
+local tab1, tab2, tab3, tab4, tab5 = gui:AddTab("Главное"), gui:AddTab("Настройки фарма"), gui:AddTab("Тренер"), gui:AddTab("Другое"), gui:AddTab("Ссылки")
 local btn, btn2, btn3, key, nmc, trainers, labels
 local findobj, findobjofclass, waitforobj, fire, invoke = get.FindFirstChild, get.FindFirstChildOfClass, get.WaitForChild, Instance.new("RemoteEvent").FireServer, Instance.new("RemoteFunction").InvokeServer
 local player = get.Players.LocalPlayer
@@ -202,7 +202,7 @@ btn2 = tab3:AddButton("Старт", function()
                     end
                 end
             elseif result == "TRAINING COMPLETE" then
-                labels("time", "Switching to other trainer...")
+                labels("time", "Переход к другому тренеру")
                 for i,v in pairs(player.PlayerFolder.Trainers:GetDescendants()) do
                     if table.find(trainers, v.Name) and findobj(v, "Progress") and tonumber(v.Progress.Value) < 100 and tonumber(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value) == 100 then
                         invoke(remotes.Trainers.ChangeTrainer, v.Name)
@@ -210,7 +210,7 @@ btn2 = tab3:AddButton("Старт", function()
                     end
                 end
             else
-                labels("time", "Time until the next training: "..result)
+                labels("time", "Время до следующей тренировки: "..result)
             end
             wait(1)
         end
@@ -255,6 +255,42 @@ do
 end
 
 for i,v in pairs(array.npcs) do drop:Add(i) end
+
+tab5:AddLabel("Полезные ссылки:")
+tab5:AddButton("Ссылка 1", function()
+    -- Путь к сервису HTTP
+    local httpService = game:GetService("HttpService")
+
+    -- Функция для открытия ссылки в браузере
+    local function openURL(url)
+        -- Создаем URL-адрес для запроса
+        local requestUrl = "https://www.roblox.com/develop/library/marketplace/link?" .. httpService:UrlEncode(url)
+
+        -- Делаем GET-запрос по созданному URL
+        httpService:GetAsync(requestUrl)
+    end
+
+    -- Пример использования функции для открытия ссылки
+    openURL("https://www.tiktok.com/@del0v0ytt")
+
+end)
+tab5:AddButton("Ссылка 2", function()
+    -- Путь к сервису HTTP
+    local httpService = game:GetService("HttpService")
+
+    -- Функция для открытия ссылки в браузере
+    local function openURL(url)
+        -- Создаем URL-адрес для запроса
+        local requestUrl = "https://www.roblox.com/develop/library/marketplace/link?" .. httpService:UrlEncode(url)
+
+        -- Делаем GET-запрос по созданному URL
+        httpService:GetAsync(requestUrl)
+    end
+
+    -- Пример использования функции для открытия ссылки
+    openURL("https://t.me/delov0y9")
+
+end)
 
 tab1:Show()
 
@@ -340,7 +376,7 @@ local function getQuest(typ)
 
     if array.autofarm and not array.died and (npc.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 20 then
         if typ then
-            labels("text", "Getting quest...")
+            labels("text", "Получение квеста")
             invoke(remotes[npc.Name].Task)
             invoke(remotes[npc.Name].Task)
             local quest = waitforobj(player.PlayerFolder.CurrentQuest.Complete, "Aogiri Member")
@@ -349,7 +385,7 @@ local function getQuest(typ)
                 labels("Quest", ("%c/%c"):format(change, quest.Max.Value))
             end)
         else
-            labels("text", "Withdrawing reputation")
+            labels("text", "Снятие репутации")
             invoke(remotes.ReputationCashOut)
             oldtick = tick()
         end
@@ -476,7 +512,7 @@ while true do
                         end
                     end)()
 
-                    labels("text", "Moving to: "..npc.Name)
+                    labels("text", "Двигаемся к: "..npc.Name)
 
                     if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
                         tp(npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0,0) + Vector3.new(0,myData.DistanceFromBoss,0))
@@ -484,7 +520,7 @@ while true do
                         tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
                     end
 
-                    labels("text", "Killing: "..npc.Name)
+                    labels("text", "Убиваем: "..npc.Name)
 
                     reached = true
 
@@ -516,16 +552,16 @@ while true do
                         if array.autofarm and player.Character.Humanoid.Health > 0 then
                             labels("Kills", 1)
                             if npc.Name ~= "Eto Yoshimura" and not findobj(npc.Parent, "Gyakusatsu") and npc.Name ~= "Gyakusatsu" then
-                                labels("text", "Collecting corpse...")
+                                labels("text", "Собираем труп")
                                 collect(npc)
                             end
                         end
                     end
                 else
-                    labels("text", "Target not found, waiting...")
+                    labels("text", "Цель не найдена ждём")
                 end
             else
-                labels("text", "Waiting for character to respawn")
+                labels("text", "Ждем возрождения персонажа")
                 array.died = true
             end
         end)
