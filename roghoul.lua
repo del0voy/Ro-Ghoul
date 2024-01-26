@@ -1,4 +1,4 @@
-local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("Ro-Ghoul", {
+local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("Ro-Ghoul by de1ov0y", {
     main_color = Color3.fromRGB(0,0,0),
     min_size = Vector2.new(373, 340),
     can_resize = false
@@ -10,7 +10,7 @@ local get = setmetatable({}, {
     end
 })
 
-local tab1, tab2, tab3, tab4 = gui:AddTab("Main"), gui:AddTab("Farm Options"), gui:AddTab("Trainer"), gui:AddTab("Misc")
+local tab1, tab2, tab3, tab4 = gui:AddTab("Главное"), gui:AddTab("Настройки фарма"), gui:AddTab("Тренер"), gui:AddTab("Другое")
 local btn, btn2, btn3, key, nmc, trainers, labels
 local findobj, findobjofclass, waitforobj, fire, invoke = get.FindFirstChild, get.FindFirstChildOfClass, get.WaitForChild, Instance.new("RemoteEvent").FireServer, Instance.new("RemoteFunction").InvokeServer
 local player = get.Players.LocalPlayer
@@ -63,26 +63,26 @@ local array = {
     }
 }
 
-tab1:AddLabel("Target")
+tab1:AddLabel("Цель")
 
 local drop = tab1:AddDropdown("Select", function(opt)
     array.targ = array.npcs[opt]
 end)
 
-btn = tab1:AddButton("Start", function()
+btn = tab1:AddButton("Старт", function()
     if not array.autofarm then
         if key then
-            btn.Text, array.autofarm = "Stop", true
+            btn.Text, array.autofarm = "Стоп", true
             local farmtick = tick()
             while array.autofarm do
-                labels("tfarm", "Time elapsed: "..os.date("!%H:%M:%S", tick() - farmtick))
+                labels("tfarm", "Прошло времени: "..os.date("!%H:%M:%S", tick() - farmtick))
                 wait(1)
             end
         else
             player:Kick("Failed to get the Remote key, please try to execute the script again")
         end
     else
-        btn.Text, array.autofarm, array.died = "Start", false, false
+        btn.Text, array.autofarm, array.died = "Старт", false, false
     end
 end)
 
@@ -170,13 +170,13 @@ local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly =
 progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 
 player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
-    labels("p", "Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)
+    labels("p", "Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)
     progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 end)
 
-btn2 = tab3:AddButton("Start", function()
+btn2 = tab3:AddButton("Старт", function()
     if not array.trainer then
-        array.trainer, btn2.Text = true, "Stop"
+        array.trainer, btn2.Text = true, "Стоп"
         local connection, time
 
         while array.trainer do
@@ -329,7 +329,7 @@ local function getNPC()
 end
 
 local function getQuest(typ)
-    labels("text", "Moving to quest NPC")
+    labels("text", "Двигаемся к старику")
 
     local npc = team == "Ghoul" and workspace.Anteiku.Yoshimura or workspace.CCGBuilding.Yoshitoki
 
@@ -533,4 +533,4 @@ while true do
         labels("text", "")
     end
     wait()
-end
+    end
