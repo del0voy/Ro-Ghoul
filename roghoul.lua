@@ -257,38 +257,11 @@ end
 for i,v in pairs(array.npcs) do drop:Add(i) end
 
 tab5:AddLabel("Полезные ссылки:")
-tab5:AddButton("Ссылка 1", function()
-    -- Путь к сервису HTTP
-    local httpService = game:GetService("HttpService")
 
-    -- Функция для открытия ссылки в браузере
-    local function openURL(url)
-        -- Создаем URL-адрес для запроса
-        local requestUrl = "https://www.roblox.com/develop/library/marketplace/link?" .. httpService:UrlEncode(url)
-
-        -- Делаем GET-запрос по созданному URL
-        httpService:GetAsync(requestUrl)
-    end
-
-    -- Пример использования функции для открытия ссылки
-    openURL("https://www.tiktok.com/@del0v0ytt")
+tab5:AddButton("tik tok - https://www.tiktok.com/@del0v0ytt", function()
 
 end)
-tab5:AddButton("Ссылка 2", function()
-    -- Путь к сервису HTTP
-    local httpService = game:GetService("HttpService")
-
-    -- Функция для открытия ссылки в браузере
-    local function openURL(url)
-        -- Создаем URL-адрес для запроса
-        local requestUrl = "https://www.roblox.com/develop/library/marketplace/link?" .. httpService:UrlEncode(url)
-
-        -- Делаем GET-запрос по созданному URL
-        httpService:GetAsync(requestUrl)
-    end
-
-    -- Пример использования функции для открытия ссылки
-    openURL("https://t.me/delov0y9")
+tab5:AddButton("telegram channel - https://t.me/delov0y9 ", function()
 
 end)
 
