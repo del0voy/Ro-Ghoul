@@ -68,7 +68,7 @@ local array = {
 
 tab1:AddLabel("Цель")
 
-local drop = tab1:AddDropdown("Select", function(opt)
+local drop = tab1:AddDropdown("Выбрать", function(opt)
     array.targ = array.npcs[opt]
 end)
 
@@ -98,10 +98,10 @@ labels = setmetatable({
     text = {label = tab1:AddLabel("")},
     tfarm = {label = tab1:AddLabel("")},
     space = {label = tab1:AddLabel("")},
-    Quest = {prefix = "Current Quest: ", label = tab1:AddLabel("Current Quest: None")},
+    Quest = {prefix = "Current Quest: ", label = tab1:AddLabel("Текущий квест: Нет")},
     Yen = {prefix = "Yen: ", label = tab1:AddLabel("Yen: 0"), value = 0, oldval = player.PlayerFolder.Stats.Yen.Value},
     RC = {prefix = "RC: ", label = tab1:AddLabel("RC: 0"), value = 0, oldval = player.PlayerFolder.Stats.RC.Value},
-    Kills = {prefix = "Kills: ", label = tab1:AddLabel("Kills: 0"), value = 0}
+    Kills = {prefix = "Kills: ", label = tab1:AddLabel("Убийств: 0"), value = 0}
 }, {
     __call = function (self, typ, newv, oldv)
         if typ and newv then
