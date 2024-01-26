@@ -256,13 +256,16 @@ end
 
 for i,v in pairs(array.npcs) do drop:Add(i) end
 
+local tab5 = gui:AddTab("Ссылки")
+
 tab5:AddLabel("Полезные ссылки:")
 
-tab5:AddButton("tik tok - https://www.tiktok.com/@del0v0ytt", function()
-
+tab5:AddButton("TikTok", function()
+    game:GetService("GuiService"):OpenBrowserWindow("https://www.tiktok.com/@del0v0ytt")
 end)
-tab5:AddButton("telegram channel - https://t.me/delov0y9 ", function()
 
+tab5:AddButton("Telegram канал", function()
+    game:GetService("GuiService"):OpenBrowserWindow("https://t.me/delov0y9")
 end)
 
 tab1:Show()
