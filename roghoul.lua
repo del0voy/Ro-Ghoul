@@ -1,4 +1,4 @@
-local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("Ro-Ghoul by de1ov0y", {
+local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("❤Ro-Ghoul by de1ov0y❤", {
     main_color = Color3.fromRGB(0,0,0),
     min_size = Vector2.new(373, 340),
     can_resize = false
@@ -261,11 +261,11 @@ local tab5 = gui:AddTab("Ссылки")
 tab5:AddLabel("Полезные ссылки:")
 
 tab5:AddButton("TikTok", function()
-    game:GetService("GuiService"):OpenBrowserWindow("https://www.tiktok.com/@del0v0ytt")
+    labels("text", "https://www.tiktok.com/@del0v0ytt")
 end)
 
 tab5:AddButton("Telegram канал", function()
-    game:GetService("GuiService"):OpenBrowserWindow("https://t.me/delov0y9")
+    labels("text", "https://t.me/delov0y9")
 end)
 
 tab1:Show()
