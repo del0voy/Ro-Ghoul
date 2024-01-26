@@ -98,7 +98,7 @@ labels = setmetatable({
     text = {label = tab1:AddLabel("")},
     tfarm = {label = tab1:AddLabel("")},
     space = {label = tab1:AddLabel("")},
-    Quest = {prefix = "Current Quest: ", label = tab1:AddLabel("Current Quest: None")},
+    Quest = {prefix = "Текущий квест: ", label = tab1:AddLabel("Текущий квест: Нет")},
     Yen = {prefix = "Yen: ", label = tab1:AddLabel("Yen: 0"), value = 0, oldval = player.PlayerFolder.Stats.Yen.Value},
     RC = {prefix = "RC: ", label = tab1:AddLabel("RC: 0"), value = 0, oldval = player.PlayerFolder.Stats.RC.Value},
     Kills = {prefix = "Kills: ", label = tab1:AddLabel("Убийств: 0"), value = 0}
@@ -166,27 +166,27 @@ tab2:AddSlider("Distance from Bosses", function(x)
     myData.DistanceFromBoss = x * -1
 end, {min = 0, max = 15}):Set(55)
 
-labels.p = {label = tab3:AddLabel("Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
+labels.p = {label = tab3:AddLabel("Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
 
-local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly = true})
+local progress = tab3:AddSlider("Прогресс", nil, {min = 0, max = 100, readonly = true})
 
 progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 
 player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
-    labels("p", "Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)
+    labels("p", "Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)
     progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 end)
 
-btn2 = tab3:AddButton("Start", function()
+btn2 = tab3:AddButton("Старт", function()
     if not array.trainer then
-        array.trainer, btn2.Text = true, "Stop"
+        array.trainer, btn2.Text = true, "Стоп"
         local connection, time
 
         while array.trainer do
             if connection and connection.Connected then
                 connection:Disconnect()
             end
-            
+
             local tkey, result
 
             connection = player.Backpack.DescendantAdded:Connect(function(obj)
@@ -194,7 +194,7 @@ btn2 = tab3:AddButton("Start", function()
                     tkey = obj.Value
                 end
             end)
-            
+
             result = invoke(remotes.Trainers.RequestTraining)
 
             if result == "TRAINING" then
@@ -205,7 +205,7 @@ btn2 = tab3:AddButton("Start", function()
                     end
                 end
             elseif result == "TRAINING COMPLETE" then
-                labels("time", "Switching to other trainer...")
+                labels("time", "Переход к другому тренеру")
                 for i,v in pairs(player.PlayerFolder.Trainers:GetDescendants()) do
                     if table.find(trainers, v.Name) and findobj(v, "Progress") and tonumber(v.Progress.Value) < 100 and tonumber(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value) == 100 then
                         invoke(remotes.Trainers.ChangeTrainer, v.Name)
@@ -213,7 +213,7 @@ btn2 = tab3:AddButton("Start", function()
                     end
                 end
             else
-                labels("time", "Time until the next training: "..result)
+                labels("time", "Время до следующей тренировки: "..result)
             end
             wait(1)
         end
