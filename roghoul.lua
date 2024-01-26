@@ -259,7 +259,6 @@ for i,v in pairs(array.npcs) do drop:Add(i) end
 tab5:AddLabel("Полезные ссылки:")
 tab5:AddLabel("Tik Tok - https://www.tiktok.com/@del0v0ytt", function()
 tab5:AddLabel("Telegram канал - https://t.me/delov0y9", function()
-tab5:AddLabel("YouTube канал - https://www.youtube.com/channel/UCe3_8DTSzDZ7M8GA1OSR-Uw", function()
         
 end)
 
