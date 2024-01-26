@@ -1,4 +1,7 @@
-local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("❤Ro-Ghoul by de1ov0y❤", {
+-- Спасибо что используете мой скрипт,подпишитесь на мой телеграм канал https://t.me/delov0y9 и мой тик ток https://www.tiktok.com/@del0v0ytt
+-- Мой дискорд de1ov0y
+
+local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("Ro-Ghoul by de1ov0y", {
     main_color = Color3.fromRGB(0,0,0),
     min_size = Vector2.new(373, 340),
     can_resize = false
@@ -10,7 +13,7 @@ local get = setmetatable({}, {
     end
 })
 
-local tab1, tab2, tab3, tab4, tab5 = gui:AddTab("Главное"), gui:AddTab("Настройки фарма"), gui:AddTab("Тренер"), gui:AddTab("Другое"), gui:AddTab("Ссылки")
+local tab1, tab2, tab3, tab4, tab5 = gui:AddTab("Главное"), gui:AddTab("Настройки фарма"), gui:AddTab("Тренер"), gui:AddTab("Другое")
 local btn, btn2, btn3, key, nmc, trainers, labels
 local findobj, findobjofclass, waitforobj, fire, invoke = get.FindFirstChild, get.FindFirstChildOfClass, get.WaitForChild, Instance.new("RemoteEvent").FireServer, Instance.new("RemoteFunction").InvokeServer
 local player = get.Players.LocalPlayer
@@ -255,12 +258,6 @@ do
 end
 
 for i,v in pairs(array.npcs) do drop:Add(i) end
-
-tab5:AddLabel("Полезные ссылки:")
-tab5:AddLabel("Tik Tok - https://www.tiktok.com/@del0v0ytt", function()
-tab5:AddLabel("Telegram канал - https://t.me/delov0y9", function()
-        
-end)
 
 tab1:Show()
 
