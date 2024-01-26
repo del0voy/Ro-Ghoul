@@ -170,6 +170,10 @@ labels.p = {label = tab3:AddLabel("Current trainer: "..player.PlayerFolder.Train
 
 local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly = true})
 
+labels.p = {label = tab3:AddLabel("Current trainer: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
+
+local progress = tab3:AddSlider("Progress", nil, {min = 0, max = 100, readonly = true})
+
 progress:Set(player.PlayerFolder.Trainers[player.PlayerFolder.Trainers[team.."Trainer"].Value].Progress.Value)
 
 player.PlayerFolder.Trainers[team.."Trainer"].Changed:connect(function()
