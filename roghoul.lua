@@ -54,7 +54,7 @@ local array = {
         ["Touka Kirishima"] = 250
     },
 
-    npcs = {["Aogiri Members"] = "GhoulSpawns", Investigators = "CCGSpawns", Humans = "HumanSpawns"},
+    npcs = {["Aogiri Members"] = "GhoulSpawns", Investigators = "CCGSpawns", Humans = "HumanSpawns", None = "None"},
 
     stages = {"One", "Two", "Three", "Four", "Five", "Six"},
 
@@ -98,7 +98,7 @@ labels = setmetatable({
     text = {label = tab1:AddLabel("")},
     tfarm = {label = tab1:AddLabel("")},
     space = {label = tab1:AddLabel("")},
-    Quest = {prefix = "Текущий квест: ", label = tab1:AddLabel("Текущий квест: Нет")},
+    Rep = {prefix = "Rep: ", label = tab1:AddLabel("Rep: 0"), value = 0, oldval = player.PlayerFolder.Stats.Rep.Value},
     Yen = {prefix = "Yen: ", label = tab1:AddLabel("Yen: 0"), value = 0, oldval = player.PlayerFolder.Stats.Yen.Value},
     RC = {prefix = "RC: ", label = tab1:AddLabel("RC: 0"), value = 0, oldval = player.PlayerFolder.Stats.RC.Value},
     Kills = {prefix = "Kills: ", label = tab1:AddLabel("Убийств: 0"), value = 0}
@@ -130,7 +130,7 @@ local function getLabel(la)
     return labels[la].value and labels[la].value or labels[la].label.Text
 end
 
-btn3 = tab1:AddButton("Reset", function() labels() end)
+btn3 = tab1:AddButton("Ресет статов", function() labels() end)
 
 if team == "CCG" then tab2:AddLabel("Стадия Куинке") else tab2:AddLabel("Стадия Кагуне") end
 
@@ -489,7 +489,7 @@ while true do
                         tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
                     end
 
-                    labels("text", "Killing: "..npc.Name)
+                    labels("text", "Убиваем: "..npc.Name)
                     
                     reached = true
 
