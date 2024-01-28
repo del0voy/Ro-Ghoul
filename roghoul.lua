@@ -487,9 +487,7 @@ while true do
                         tp(npc.HumanoidRootPart.CFrame + Vector3.new(0, 15, 0))
                         local bossPos = npc.HumanoidRootPart.Position
                         local targetPos = bossPos + Vector3.new(0, 15, 0)  -- Установите расстояние в 15
-                        player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos, bossPos) * CFrame.Angles(math.rad(180), 0, 0)    
-                    else
-                        tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
+                        player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos, bossPos) * CFrame.Angles(math.rad(180), 0, 0)
                     end
 
                     labels("text", "Убиваем: "..npc.Name)
