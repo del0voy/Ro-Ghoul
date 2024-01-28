@@ -484,7 +484,7 @@ while true do
                       labels("text", "Двигаемся к: "..npc.Name)
 
                     if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
-                        tp(npc.HumanoidRootPart.CFrame + Vector3.new(0, myData.DistanceFromBoss, 0))
+                        tp(npc.HumanoidRootPart.CFrame + Vector3.new(0, 15, 0))
                         local bossPos = npc.HumanoidRootPart.Position
                         local targetPos = bossPos + Vector3.new(0, 15, 0)  -- Установите расстояние в 15
                         player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos, bossPos) * CFrame.Angles(math.rad(180), 0, 0)    
@@ -492,7 +492,7 @@ while true do
                         tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
                     end
 
-                    labels("text", "Killing: "..npc.Name)
+                    labels("text", "Убиваем: "..npc.Name)
                     
                     reached = true
 
