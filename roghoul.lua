@@ -54,13 +54,7 @@ local array = {
         ["Touka Kirishima"] = 250
     },
 
-  npcs = {
-    ["Aogiri Members"] = "GhoulSpawns",
-    Investigators = "CCGSpawns",
-    Humans = "HumanSpawns",
-    none = function() end -- Добавляем пункт "none", который не делает ничего
-}
-
+  npcs = {["Aogiri Members"] = "GhoulSpawns", Investigators = "CCGSpawns", Humans = "HumanSpawns"},
 
     stages = {"One", "Two", "Three", "Four", "Five", "Six"},
 
