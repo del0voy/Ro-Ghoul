@@ -481,62 +481,50 @@ while true do
                         end
                     end)()
 
-                    labels("text", "Двигаемся к: "..npc.Name)
+labels("text", "Убиваем: "..npc.Name)
 
-                    if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
-                        local bossPos = npc.HumanoidRootPart.Position
-                        local targetPos = bossPos + Vector3.new(0, 15, 0)  -- Расстояние от босса до персонажа 15 единиц вверх
-                        player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos) * CFrame.Angles(math.rad(180), 0, 0)        
-                            
-                    end
+reached = true
 
-                    labels("text", "Убиваем: "..npc.Name)
+if not array.found then
+    while findobj(findobj(npc.Parent, npc.Name), "Head") and player.Character.Humanoid.Health > 0 and array.autofarm do
+        if not findobj(player.Character, "Kagune") and not findobj(player.Character, "Quinque")  then
+            pressKey(array.stage)
+        end
+        -- Устанавливаем позицию над боссом, смотрящим вниз
+        local bossPos = npc.HumanoidRootPart.Position
+        local targetPos = bossPos + Vector3.new(0, 15, 0)  -- Расстояние от босса до персонажа 15 единиц вверх
+        player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos) * CFrame.Angles(math.rad(180), 0, 0)
 
-                    reached = true
-
-                    if not array.found then
-                        while findobj(findobj(npc.Parent, npc.Name), "Head") and player.Character.Humanoid.Health > 0 and array.autofarm do
-                            if not findobj(player.Character, "Kagune") and not findobj(player.Character, "Quinque")  then
-                                pressKey(array.stage)
-                            end
-                            if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
-                                for x,y in pairs(myData.Skills) do
-                                    if player.PlayerFolder.CanAct.Value and y and array.skills[x].Value ~= "DownTime" then
-                                        pressKey(x)
-                                    end
-                                end
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0,0) + Vector3.new(0,myData.DistanceFromBoss ,0)
-                            else
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc
-                            end
-                            if player.PlayerFolder.CanAct.Value then
-                                pressKey("Mouse1")
-                            end
-                            task.wait()
-                        end
-
-                        if npc.Name == "Gyakusatsu" then
-                            player.Character.Humanoid.Health = 0
-                        end
-
-                        if array.autofarm and player.Character.Humanoid.Health > 0 then
-                            labels("Kills", 1)
-                            if npc.Name ~= "Eto Yoshimura" and not findobj(npc.Parent, "Gyakusatsu") and npc.Name ~= "Gyakusatsu" then
-                                labels("text", "Собираем труп")
-                                collect(npc)
-                            end
-                        end
-                    end
-                else
-                    labels("text", "Цель не найдена ждём")
+        -- Если NPC - босс, выполняем навыки и стреляем
+        if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
+            for x,y in pairs(myData.Skills) do
+                if player.PlayerFolder.CanAct.Value and y and array.skills[x].Value ~= "DownTime" then
+                    pressKey(x)
                 end
-            else
-                labels("text", "Ждем возрождения персонажа")
-                array.died = true
             end
-        end)
-    else
-        labels("text", "")
+            player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0,0) + Vector3.new(0,myData.DistanceFromBoss ,0)
+        else
+            -- Если не босс, перемещаемся в направлении NPC
+            player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc
+        end
+
+        if player.PlayerFolder.CanAct.Value then
+            pressKey("Mouse1")
+        end
+        task.wait()
     end
-    wait()
+
+    if npc.Name == "Gyakusatsu" then
+        player.Character.Humanoid.Health = 0
     end
+
+    if array.autofarm and player.Character.Humanoid.Health > 0 then
+        labels("Kills", 1)
+        if npc.Name ~= "Eto Yoshimura" and not findobj(npc.Parent, "Gyakusatsu") and npc.Name ~= "Gyakusatsu" then
+            labels("text", "Собираем труп")
+            collect(npc)
+        end
+    end
+else
+    labels("text", "Цель не найдена ждём")
+end
