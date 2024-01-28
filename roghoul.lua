@@ -504,7 +504,7 @@ while true do
                                         pressKey(x)
                                     end
                                 end
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(0,0,0) + Vector3.new(-90,50,0)
+                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(0,0,0) + Vector3.new(-30,50,0)
                             else
                                 player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc 
                             end
