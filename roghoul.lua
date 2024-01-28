@@ -38,7 +38,7 @@ local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/z4gs/s
         ["Touka Kirishima"] = false
     },
     DistanceFromNpc = 5,
-    DistanceFromBoss = 50,
+    DistanceFromBoss = 40,
     TeleportSpeed = 150,
     ReputationFarm = false,
     ReputationCashout = false,
@@ -484,7 +484,7 @@ while true do
                       labels("text", "Двигаемся к: "..npc.Name)
 
                     if myData.Boss[npc.Name] or npc.Parent.Name == "GyakusatsuSpawn" then
-                        tp(npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),0,0) + Vector3.new(0,myData.DistanceFromBoss,0))
+                        tp(npc.HumanoidRootPart.CFrame * CFrame.Angles(0,0,0) + Vector3.new(0,0,0))
                     else
                         tp(npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc)
                     end
