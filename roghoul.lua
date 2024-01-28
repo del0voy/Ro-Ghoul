@@ -38,7 +38,7 @@ local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/z4gs/s
         ["Touka Kirishima"] = false
     },
     DistanceFromNpc = 5,
-    DistanceFromBoss = 15,
+    DistanceFromBoss = 30,
     TeleportSpeed = 150,
     ReputationFarm = false,
     ReputationCashout = false,
@@ -504,7 +504,7 @@ while true do
                                         pressKey(x)
                                     end
                                 end
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),20,0) + Vector3.new(0,20 ,0)
+                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(math.rad(90),30,0) + Vector3.new(0,30 ,0)
                             else
                                 player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc 
                             end
