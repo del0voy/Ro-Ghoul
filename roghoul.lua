@@ -504,9 +504,12 @@ while true do
                                         pressKey(x)
                                     end
                                 end
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.Angles(0,0,0) + Vector3.new(math.rad(0),30,0)
+                                local lookDownVector = Vector3.new(0, -1, 0) -- Вектор, указывающий вниз
+                                player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position, player.Character.HumanoidRootPart.Position - lookDownVector) + Vector3.new(0, 30, 0)
                             else
-                                player.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame + npc.HumanoidRootPart.CFrame.lookVector * myData.DistanceFromNpc 
+                                local lookDownVector = Vector3.new(0, -1, 0) -- Вектор, указывающий вниз
+                                player.Character.HumanoidRootPart.CFrame = CFrame.new(player.Character.HumanoidRootPart.Position, player.Character.HumanoidRootPart.Position - lookDownVector)
+                                    
                             end
                             if player.PlayerFolder.CanAct.Value then
                                 pressKey("Mouse1")
