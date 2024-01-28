@@ -54,7 +54,7 @@ local array = {
         ["Touka Kirishima"] = 250
     },
 
-    npcs = {["Aogiri Members"] = "GhoulSpawns", Investigators = "CCGSpawns", Humans = "HumanSpawns", None = "None"},
+    npcs = {["Aogiri Members"] = "GhoulSpawns", Investigators = "CCGSpawns", Humans = "HumanSpawns"},
 
     stages = {"One", "Two", "Three", "Four", "Five", "Six"},
 
