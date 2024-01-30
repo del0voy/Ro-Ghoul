@@ -1,7 +1,7 @@
 -- Спасибо что используете мой скрипт,подпишитесь на мой телеграм канал https://t.me/delov0y9 и мой тик ток https://www.tiktok.com/@del0v0ytt
 -- Мой дискорд de1ov0y
 
-local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/testtttt.lua"))():AddWindow("Ro-Ghoul by de1ov0y", {
+local gui = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/del0voy/for-Ro-Ghoul-script/main/test.lua"))():AddWindow("Ro-Ghoul by de1ov0y", {
     main_color = Color3.fromRGB(0,0,0),
     min_size = Vector2.new(380, 350),
     can_resize = false
@@ -23,7 +23,7 @@ repeat wait() until player:FindFirstChild("PlayerFolder")
 local team, remotes, stat = player.PlayerFolder.Customization.Team.Value, get.ReplicatedStorage.Remotes, player.PlayerFolder.StatsFunction
 local oldtick, farmtick = 0, 0
 local camera = workspace.CurrentCamera
-local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/z4gs/scripts/master/Settings.lua"))()("Ro-Ghoul Autofarm", {
+local myData = loadstring(game:HttpGet("https://raw.githubusercontent.com/del0voy/for-Ro-Ghoul-script/main/Settings.lua"))()("Ro-Ghoul Autofarm", {
     Skills = {
         E = false,
         F = false,
