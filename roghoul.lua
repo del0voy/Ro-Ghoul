@@ -13,7 +13,7 @@ local get = setmetatable({}, {
     end
 })
 
-local tab1, tab2, tab3, tab4, tab5 = gui:AddTab("Главное"), gui:AddTab("Настройки фарма"), gui:AddTab("Тренер"), gui:AddTab("Другое")
+local tab1, tab2, tab3, tab4, tab5 = gui:AddTab("Главное"), gui:AddTab("Фарм"), gui:AddTab("Тренер"), gui:AddTab("Другое")
 local btn, btn2, btn3, key, nmc, trainers, labels
 local findobj, findobjofclass, waitforobj, fire, invoke = get.FindFirstChild, get.FindFirstChildOfClass, get.WaitForChild, Instance.new("RemoteEvent").FireServer, Instance.new("RemoteFunction").InvokeServer
 local player = get.Players.LocalPlayer
@@ -130,8 +130,6 @@ local function getLabel(la)
     return labels[la].value and labels[la].value or labels[la].label.Text
 end
 
-btn3 = tab1:AddButton("Ресет статов", function() labels() end)
-
 if team == "CCG" then tab2:AddLabel("Стадия Куинке") else tab2:AddLabel("Стадия Кагуне") end
 
 local drop2 = tab2:AddDropdown("[ 1 ]", function(opt)
@@ -153,18 +151,6 @@ for i,v in pairs(array.boss) do
         myData.Boss[i] = bool
     end):Set(myData.Boss[i])
 end
-
-tab2:AddSlider("TP Speed", function(x)
-    myData.TeleportSpeed = x
-end, {min = 90, max = 250}):Set(45)
-
-tab2:AddSlider("Distance from NPC", function(x)
-    myData.DistanceFromNpc = x * -1
-end, {min = 0, max = 8}):Set(70)
-
-tab2:AddSlider("Distance from Bosses", function(x)
-    myData.DistanceFromBoss = x * -1
-end, {min = 0, max = 15}):Set(70)
 
 labels.p = {label = tab3:AddLabel("Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
 
@@ -334,7 +320,7 @@ local function getNPC()
 end
 
 local function getQuest(typ)
-    labels("text", "Двигаемся к старику")
+    labels("text", "Двигаемся к НПС")
 
     local npc = team == "Ghoul" and workspace.Anteiku.Yoshimura or workspace.CCGBuilding.Yoshitoki
 
