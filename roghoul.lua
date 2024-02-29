@@ -152,6 +152,18 @@ for i,v in pairs(array.boss) do
     end):Set(myData.Boss[i])
 end
 
+tab2:AddSlider("TP Speed", function(x)
+    myData.TeleportSpeed = x
+end, {min = 90, max = 250}):Set(45):Visible(false)
+
+tab2:AddSlider("Distance from NPC", function(x)
+    myData.DistanceFromNpc = x * -1
+end, {min = 0, max = 8}):Set(70):Visible(false)
+
+tab2:AddSlider("Distance from Bosses", function(x)
+    myData.DistanceFromBoss = x * -1
+end, {min = 0, max = 15}):Set(70):Visible(false)
+
 labels.p = {label = tab3:AddLabel("Текущий тренер: "..player.PlayerFolder.Trainers[team.."Trainer"].Value)}
 
 local progress = tab3:AddSlider("Прогресс", nil, {min = 0, max = 100, readonly = true})
